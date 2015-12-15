@@ -249,8 +249,8 @@ public abstract class AbstractCommandITest {
      * @throws Throwable
      */
     protected CanonicalPath getCurrentASPath() throws Throwable {
-        List<Resource> wfs = getResources("/test/resources", 1);
-        log.fine("Resources under [" + "/test/resources" + "] = [" + wfs + "]");
+        List<Resource> wfs = getResources("/feeds/localhost/resources", 1);
+        log.fine("Resources under [" + "/feeds/localhost/resources" + "] = [" + wfs + "]");
         AssertJUnit.assertEquals(1, wfs.size());
         CanonicalPath wfPath = wfs.get(0).getPath();
         return wfPath;
