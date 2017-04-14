@@ -30,9 +30,9 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import java.util.zip.GZIPInputStream;
 
-import org.hawkular.agent.monitor.storage.ExtendedInventoryStructure;
 import org.hawkular.inventory.api.model.Blueprint;
 import org.hawkular.inventory.api.model.Entity;
+import org.hawkular.inventory.api.model.ExtendedInventoryStructure;
 import org.hawkular.inventory.api.model.InventoryStructure;
 import org.hawkular.inventory.json.InventoryJacksonConfig;
 import org.hawkular.inventory.paths.CanonicalPath;

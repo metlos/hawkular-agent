@@ -56,6 +56,7 @@ import org.hawkular.agent.monitor.util.Util;
 import org.hawkular.inventory.api.Inventory;
 import org.hawkular.inventory.api.model.DataEntity;
 import org.hawkular.inventory.api.model.Entity;
+import org.hawkular.inventory.api.model.ExtendedInventoryStructure;
 import org.hawkular.inventory.api.model.InventoryStructure;
 import org.hawkular.inventory.api.model.InventoryStructure.AbstractBuilder;
 import org.hawkular.inventory.api.model.InventoryStructure.ChildBuilder;
