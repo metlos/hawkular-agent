@@ -31,6 +31,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javax.management.ObjectName;
@@ -252,6 +253,30 @@ public abstract class AbstractITest {
                 writeNode(caller, actual, expectedNodeFileName + ".actual.txt");
             }
             Assert.assertEquals(actualString, expected);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void assertNodeRegex(ModelControllerClient mcc, ModelNode address, Class<?> caller,
+            String expectedNodeFileName, boolean saveActual) {
+        try {
+            ModelNode actual = OperationBuilder
+                    .readResource()
+                    .address(address)
+                    .includeRuntime()
+                    .includeDefaults()
+                    .recursive()
+                    .execute(mcc)
+                    .assertSuccess()
+                    .getResultNode();
+            String expected = readNode(caller, expectedNodeFileName);
+            Pattern pattern = Pattern.compile(expected);
+            String actualString = actual.toString();
+            if (saveActual) {
+                writeNode(caller, actual, expectedNodeFileName + ".actual.txt");
+            }
+            Assert.assertTrue(pattern.matcher(actualString).matches());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
